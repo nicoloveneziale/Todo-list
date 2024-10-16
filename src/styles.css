@@ -1,0 +1,29 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2a2438;
+}
+
+#entry-div{
+    background-image: radial-gradient(circle, #dbd8e3 20%, #2a2438 80%);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#entry-h1{
+    font-size: 9rem;
+    border-bottom: #352f44 10px solid; 
+}
+
+#pfp-div img{
+    height: 12vh;
+    margin: 0.5vw;
+    border-radius: 50%;
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.596);
+}
+
