@@ -103,6 +103,8 @@ header h1{
     height: 90vh;
     background-color: #2a2438;
     position: absolute;
+    display: flex;
+    flex-direction: column;
 }
 
 #projects h1{
@@ -118,7 +120,7 @@ header h1{
     background: none;
     color: #dbd8e3;
     border: none;
-    margin: 1.5vw;
+    margin: 1vw;
     cursor: pointer;
 }
 

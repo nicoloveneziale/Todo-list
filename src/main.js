@@ -52,16 +52,78 @@ function initProject(name){
     projectList.push(project);
     return project;
 }
-const defaultProject = initProject("default");
 
+const defaultProject = initProject("default");
 createProjectBtn(defaultProject);
+
+const newProject = initProject("New");
+createProjectBtn(newProject);
+
+function createDialogToDo(){
+    var dialog = document.createElement("dialog");
+
+    var titleLabel = document.createElement("label");
+    titleLabel.innerHTML = "title";
+    titleLabel.for = "title";
+    
+    var title = document.createElement("input");
+    title.placeholder = "new project";
+    title.id = "title";
+
+    var descriptionLabel = document.createElement("label");
+    descriptionLabel.innerHTML = "description";
+    descriptionLabel.for = "description";
+    
+    var description = document.createElement("input");
+    description.placeholder = "description";
+    description.id = "description";
+
+    var dateLabel = document.createElement("label");
+    dateLabel.innerHTML = "due date";
+    dateLabel.for = "date";
+    
+    var date = document.createElement("input");
+    date.type = "date";
+    date.id = "date";
+
+    dialog.append(titleLabel,title,descriptionLabel,description, dateLabel, date);
+    document.querySelector("body").append(dialog);
+    return dialog;
+}
+
+function createDialogProject(){
+    var dialog = document.createElement("dialog");
+
+    var titleLabel = document.createElement("label");
+    titleLabel.innerHTML = "title";
+    titleLabel.for = "title";
+    
+    var title = document.createElement("input");
+    title.placeholder = "new project";
+    title.required = true;
+    title.id = "title";
+
+    var create = document.createElement("button");
+    create.id = "create-btn";
+    create.innerHTML = "create"
+    create.addEventListener("click", () => {
+        var project = initProject(title.value);
+        createProjectBtn(project);
+        dialog.close();
+    })
+
+    dialog.append(titleLabel,title, create);
+    document.querySelector("body").append(dialog);
+    dialog.showModal();
+}
+
 
 const addProjectButton = document.createElement("button");
 addProjectButton.id = "add-project";
 addProjectButton.innerHTML = "add";
-addProjectButton.addEventListener("click", () =>{
-    
-})
+addProjectButton.addEventListener("click", createDialogProject);
+
+projectDiv.appendChild(addProjectButton);
 
 const toDosContainer = document.createElement("div");
 toDosContainer.id = "td-container";
