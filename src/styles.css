@@ -159,3 +159,83 @@ header h1{
     border-bottom: #2a2438 5px solid;
     width: fit-content;
 }
+
+#td-container-main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+}
+
+#td-container-main div{
+    background-color: #2a2438;
+    width: 15vw;
+    height: 25vh;
+    margin: 0.5vw;
+    color: #dbd8e3;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 5px;
+    border-radius: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#td-container-main div h2{
+    color: #dbd8e3;
+    font-size: 2rem;
+    margin-bottom: 5vh;
+}
+
+#td-container-main div p{
+    color: #dbd8e3;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    word-wrap: break-word;
+}
+
+#td-container-main div label{
+    color: white;
+    font-size: 1rem;
+    margin-left: 1px;
+}
+
+.high{
+    border-left: red 4px solid;
+}
+
+.medium{
+    border-left: orange 4px solid;
+}
+
+.low{
+    border-left: #00df25 4px solid;
+}
+
+#td-container-main div button{
+    background: none;
+    border: none;
+    color: rgb(241, 49, 49);
+    font-size: 1.4rem;
+    margin: -6vh 0 0 10vw;
+    cursor: pointer;
+}
+
+#add-todo{
+    background: #2a2438;
+    border: none;
+    color: white;
+    width: 10vw;
+    border-radius: 1rem;
+    font-size: 2rem;
+    margin: 2vw;
+    cursor: pointer;
+}
+
+#project-dialog, #todo-dialog{
+    background-color: #352f44;
+    border: none;
+    border-radius: 1rem;
+}

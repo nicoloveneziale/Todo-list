@@ -71,11 +71,24 @@ function renderTodos(project){
         let todoDescription = document.createElement("p");
         let dueDate = document.createElement("p");
         let priority = document.createElement("p");
+        let todoDescriptionLabel = document.createElement("label");
+        todoDescriptionLabel.innerHTML = "Description:";
+        let dueDateLabel = document.createElement("label");
+        dueDateLabel.innerHTML = "Due Date:";
+        let priorityLabel = document.createElement("label");
+        priorityLabel.innerHTML = "Priority:";
+        let deleteTodo = document.createElement("button");
+        deleteTodo.innerHTML = "delete";
+        deleteTodo.addEventListener("click", () => {
+            todos.splice(i, 1);
+            renderTodos(project);
+        })
         todoTitle.innerHTML = todo.title;
         todoDescription.innerHTML = todo.description;
         dueDate.innerHTML = todo.dueDate;
         priority.innerHTML = todo.priority;
-        todoDiv.append(todoTitle, todoDescription, dueDate, priority);
+        todoDiv.classList.add(todo.priority);
+        todoDiv.append(todoTitle,deleteTodo, todoDescriptionLabel, todoDescription, dueDateLabel, dueDate, priorityLabel, priority);
         toDosContainerMain.appendChild(todoDiv);
     }
 }
@@ -93,7 +106,7 @@ function initTodo(project,title,description,dueDate,priority){
 }
 
 initProject("default");
-initTodo(projectList[0],"To Do", "This is the default to do", "19/11/20023", "High");
+initTodo(projectList[0],"To Do", "This is the default to do", "2023-11-11", "high");
 currentProject = projectList[0];
 
 function createDialogToDo(){
@@ -154,6 +167,7 @@ function createDialogToDo(){
 
     toDoDialog.append(titleLabel,title,descriptionLabel,description, dateLabel, date, priority, create);
     document.querySelector("body").append(toDoDialog);
+    toDoDialog.id = "todo-dialog";
     return toDoDialog;
 }
 
@@ -180,11 +194,14 @@ function createDialogProject(){
 
     projectDialog.append(titleLabel,title, create);
     document.querySelector("body").append(projectDialog);
+    projectDialog.id = "project-dialog";
     return projectDialog;
 }
 
 const toDoDialog = createDialogToDo();
 const projectDialog = createDialogProject();
+toDoDialog.close();
+projectDialog.close();
 
 
 const addProjectButton = document.createElement("button");
@@ -197,7 +214,7 @@ addProjectButton.addEventListener("click", () =>{
 projectDiv.appendChild(addProjectButton);
 
 const addTodoBtn = document.createElement("button");
-addTodoBtn.innerHTML = "Add";
+addTodoBtn.innerHTML = "add";
 addTodoBtn.id = "add-todo";
 addTodoBtn.addEventListener("click", () => {
     toDoDialog.showModal();
