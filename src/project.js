@@ -3,6 +3,14 @@ class Project {
         this.name = name;
         this.todos = [];
     }
+
+    addTodo(todo){
+        this.todos.push(todo);
+    }
+
+    getTodos(){
+        return this.todos;
+    }
 }
 
 export default Project;
