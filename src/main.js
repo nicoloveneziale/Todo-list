@@ -114,12 +114,6 @@ function initTodo(project,title,description,dueDate,priority){
     localStorage.setItem("projectList", JSON.stringify(projectList));
 }
 
-if(projectList.length == 0){  
-    initProject("default");
-    initTodo(projectList[0],"To Do", "This is the default to do", "2023-11-11", "high");
-    currentProject = projectList[0];
-}
-
 function createDialogToDo(){
     var toDoDialog = document.createElement("dialog");
     var toDoDialogDiv = document.createElement("div");
@@ -237,8 +231,14 @@ addTodoBtn.addEventListener("click", () => {
 
 mainDiv.append(header, projectDiv, toDosContainer)
 
-for(var i = 0; i < projectList.length; i++){
-    createProjectBtn(projectList[i]);
+if(projectList.length == 0){  
+    initProject("default");
+    initTodo(projectList[0],"To Do", "This is the default to do", "2023-11-11", "high");
+    currentProject = projectList[0];
+} else {
+    for(var i = 0; i < projectList.length; i++){
+        createProjectBtn(projectList[i]);
+    }
 }
 
 export {
