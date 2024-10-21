@@ -9,7 +9,15 @@ continueBtn.addEventListener("click", () => {
     body.removeChild(entryDiv);
     body.appendChild(mainDiv);
     pfp.src = pfpImg;
+    localStorage.setItem("pfpImg", pfpImg);
     username.innerHTML = usernameValue;
+    localStorage.setItem("usernameValue", usernameValue);
 })
 
-body.append(entryDiv);
+if(localStorage.pfpImg && localStorage.usernameValue){
+    body.appendChild(mainDiv);
+    pfp.src = localStorage.pfpImg;
+    username.innerHTML = localStorage.usernameValue;
+} else {
+    body.append(entryDiv);
+}

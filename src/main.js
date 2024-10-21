@@ -1,8 +1,15 @@
 import Project from "./project";
 import Todo from "./todo";
 
-const projectList = [];
+if(localStorage.projectList){
+    var projectList = JSON.parse(localStorage.getItem("projectList"));
+} else{
+    var projectList = [];
+}
+
 let currentProject = null;
+
+console.log(projectList)
 
 const mainDiv = document.createElement("div");
 mainDiv.id = "main";
@@ -59,7 +66,7 @@ toDosContainerMain.id = "td-container-main";
 
 function renderTodos(project){
     toDosContainerMain.innerHTML = "";
-    let todos = project.getTodos();
+    let todos = project.todos;
     console.log(todos);
     if (todos.length == 0){
         return;
@@ -97,17 +104,21 @@ function initProject(name){
     let project = new Project(name);
     projectList.push(project);
     createProjectBtn(project);
+    localStorage.setItem("projectList", JSON.stringify(projectList));
 }
 
 function initTodo(project,title,description,dueDate,priority){
     let todo = new Todo(title,description,dueDate,priority);
-    project.addTodo(todo);
+    project.todos.push(todo);
     renderTodos(project);
+    localStorage.setItem("projectList", JSON.stringify(projectList));
 }
 
-initProject("default");
-initTodo(projectList[0],"To Do", "This is the default to do", "2023-11-11", "high");
-currentProject = projectList[0];
+if(projectList.length == 0){  
+    initProject("default");
+    initTodo(projectList[0],"To Do", "This is the default to do", "2023-11-11", "high");
+    currentProject = projectList[0];
+}
 
 function createDialogToDo(){
     var toDoDialog = document.createElement("dialog");
@@ -225,6 +236,10 @@ addTodoBtn.addEventListener("click", () => {
 });
 
 mainDiv.append(header, projectDiv, toDosContainer)
+
+for(var i = 0; i < projectList.length; i++){
+    createProjectBtn(projectList[i]);
+}
 
 export {
     mainDiv,
