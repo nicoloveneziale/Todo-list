@@ -88,7 +88,7 @@ function renderTodos(project){
         dueDate.innerHTML = todo.dueDate;
         priority.innerHTML = todo.priority;
         todoDiv.classList.add(todo.priority);
-        todoDiv.append(todoTitle,deleteTodo, todoDescriptionLabel, todoDescription, dueDateLabel, dueDate, priorityLabel, priority);
+        todoDiv.append(deleteTodo, todoTitle, todoDescriptionLabel, todoDescription, dueDateLabel, dueDate, priorityLabel, priority);
         toDosContainerMain.appendChild(todoDiv);
     }
 }
@@ -111,6 +111,7 @@ currentProject = projectList[0];
 
 function createDialogToDo(){
     var toDoDialog = document.createElement("dialog");
+    var toDoDialogDiv = document.createElement("div");
 
     var titleLabel = document.createElement("label");
     titleLabel.innerHTML = "title";
@@ -165,7 +166,8 @@ function createDialogToDo(){
         toDoDialog.close();
     })
 
-    toDoDialog.append(titleLabel,title,descriptionLabel,description, dateLabel, date, priority, create);
+    toDoDialogDiv.append(titleLabel,title,descriptionLabel,description, dateLabel, date, priority, create);
+    toDoDialog.appendChild(toDoDialogDiv);
     document.querySelector("body").append(toDoDialog);
     toDoDialog.id = "todo-dialog";
     return toDoDialog;
@@ -174,6 +176,7 @@ function createDialogToDo(){
 
 function createDialogProject(){
     var projectDialog = document.createElement("dialog");
+    var projectDialogDiv = document.createElement("div");
 
     var titleLabel = document.createElement("label");
     titleLabel.innerHTML = "title";
@@ -192,7 +195,8 @@ function createDialogProject(){
         projectDialog.close();
     })
 
-    projectDialog.append(titleLabel,title, create);
+    projectDialogDiv.append(titleLabel,title, create);
+    projectDialog.appendChild(projectDialogDiv);
     document.querySelector("body").append(projectDialog);
     projectDialog.id = "project-dialog";
     return projectDialog;

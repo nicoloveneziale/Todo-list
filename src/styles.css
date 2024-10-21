@@ -219,7 +219,6 @@ header h1{
     border: none;
     color: rgb(241, 49, 49);
     font-size: 1.4rem;
-    margin: -6vh 0 0 10vw;
     cursor: pointer;
 }
 
@@ -238,4 +237,45 @@ header h1{
     background-color: #352f44;
     border: none;
     border-radius: 1rem;
+}
+
+#project-dialog div, #todo-dialog div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#project-dialog div label, #todo-dialog div label{
+    color: #dbd8e3;
+    margin: 1vh;
+    font-size: 1.5rem;
+    border-bottom: #534d64 4px solid;
+}
+
+#project-dialog div input, #todo-dialog div input{
+    color: #dbd8e3;
+    background-color: #2a2438;
+    border: none;
+    font-size: 1.4rem;
+    padding: 0.4vw;
+    margin: 1vh;
+    border-radius: 1rem;
+}
+
+#create-btn{
+    background-color: #2a2438;
+    color: #dbd8e3;
+    border: none;
+    margin: 1vh;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+#priority-select, #priority-select option{
+    background-color: #2a2438;
+    color: #dbd8e3;
+    border: none;
+    margin: 1vh;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
 }
